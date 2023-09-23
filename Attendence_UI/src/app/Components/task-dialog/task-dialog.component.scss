@@ -1,0 +1,36 @@
+.example-form-fields {
+    display: flex;
+    margin-left: 40px;
+    align-items: flex-start;
+  }
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 50px;
+  }
+  .example-container mat-form-field {
+    width: 220px;
+  }
+ 
+  .example-container form {
+    margin-bottom: 20px;
+  }
+  
+.custom-form-field {
+    width: 90%; 
+}
+.custom-textarea {
+    width: 100%; 
+    resize: none;
+    direction: rtl; 
+}
+
+.underline {
+    text-decoration: underline;
+  }
+  
+  .custom-form-fieldds{
+    width: 84%; 
+    margin-left: 40px;
+}
+  
+
+  

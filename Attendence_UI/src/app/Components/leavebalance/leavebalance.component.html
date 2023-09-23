@@ -1,0 +1,24 @@
+<div class="leave-card-container">
+    <mat-card class="leave-card" *ngFor="let leave of leaveCategories">
+      <mat-card-header>
+        <mat-card-title class="leave-name">{{ leave.leaveName }}</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content class="leave-info">
+        <div class="grant-info">
+          <p class="grant-text">Grant</p>
+          <p class="grant-value">{{ leave.grant }}</p>
+        </div>
+  
+        <div class="balance-info">
+          <p class="balance-text">Balance</p>
+          <p class="balance-value">{{ leave.balance }}</p>
+        </div>
+      </mat-card-content>
+  
+      <div class="count-info">
+        <p class="count-value">{{ leave.count }} of {{leave.grant}}</p>
+      </div>
+    </mat-card>
+  </div>
+  

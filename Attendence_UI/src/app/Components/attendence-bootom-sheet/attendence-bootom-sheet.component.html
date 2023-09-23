@@ -1,0 +1,32 @@
+
+   <!-- bottom-sheet.component.html -->
+
+   <mat-nav-list>
+<mat-grid-list cols="2" rowHeight="100px">
+    <mat-grid-tile>
+      <strong>Date:</strong>
+      {{ sharedData.dateFormating==""?'---':sharedData.dateFormating}}
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <strong>Duration:</strong>
+      {{sharedData. durationFormating==""?'---':sharedData. durationFormating }}
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <strong>{{sharedData.extraTime|timeLabel}}:</strong>
+      {{ sharedData.extraTime==""?'---': sharedData.extraTime }}
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <strong>Punch In:</strong>
+      {{sharedData. punchInFormating==""?'---':sharedData. punchInFormating }}
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <strong>Punch Out:</strong>
+      {{sharedData. punchOutFormating==""?'---':sharedData. punchOutFormating }}
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <strong>Status:</strong>
+      {{sharedData. status==""?'---':sharedData. status }}
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-nav-list>
+  

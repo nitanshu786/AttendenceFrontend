@@ -1,0 +1,82 @@
+.leave-form-card {
+    width: 100%;
+    max-width: 600px; /* Adjust the maximum width as needed */
+    margin: 0 auto;
+    padding: 30px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f7f7f7;
+  }
+  
+  .leave-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+  }
+  
+  .leave-type {
+    width: 100%; /* Make "Leave Type" field occupy full width */
+    margin-right: 10px; /* Add margin for spacing */
+  }
+  
+  .date-field {
+    display: flex;
+    gap: 10px;
+  }
+  .date-fields {
+    display: flex;
+    margin-left: auto;
+    gap: 10px;
+  }
+  
+  .leave-field,
+  .to-cc-field,
+  .reason-field {
+    width: 100%;
+  }
+  
+  .leave-field,
+  .to-cc-field {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .reason-field textarea {
+    height: 120px; /* Adjust the height as needed */
+    font-size: 16px; /* Increase the font size as needed */
+  }
+  
+  .file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .file-upload mat-icon {
+    cursor: pointer;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 0;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Optional: Add custom styles to further enhance the design */
+  

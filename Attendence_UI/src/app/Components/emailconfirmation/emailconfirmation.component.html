@@ -1,0 +1,17 @@
+<!-- email-confirmation.component.html -->
+<div class="centered-div" *ngIf="changehtml" >
+    <div *ngIf="!isConfirmed">
+        Please wait... Verifying email confirmation.
+      </div>
+      
+      <div *ngIf="isConfirmed">
+        Email confirmed successfully!
+        <a mat-list-item routerLink="/login" >Click Here to login</a>
+      </div>
+</div>
+
+<div class="centered-div" >
+  <h3>Email send successfully Please Check your email!!</h3>
+</div>
+
+  

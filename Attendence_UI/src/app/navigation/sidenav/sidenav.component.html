@@ -1,0 +1,38 @@
+<mat-nav-list class="sidenav-list">
+  <a mat-list-item routerLink="/dashboard/home/tasks"   >
+    <mat-icon>assignment</mat-icon>
+    <span>Tasks</span>
+  </a>
+  <a mat-list-item routerLink="/dashboard/home/attendance" >
+    <mat-icon>event</mat-icon>
+    <span>Attendance</span>
+  </a>
+  <a mat-list-item routerLink="/dashboard/home/log" >
+    <mat-icon>history</mat-icon>
+    <span>Log</span>
+  </a>
+  <a mat-list-item routerLink="/dashboard/home/taskdrop" >
+    <mat-icon>playlist_add_check</mat-icon>
+    <span>Task Drop</span>
+  </a>
+ 
+  <a mat-list-item routerLink="/dashboard/home/calender" >
+    <mat-icon>playlist_add_check</mat-icon>
+    <span>Attendence Calender</span>
+  </a>
+  <a mat-list-item routerLink="/dashboard/home/Leave" >
+    <span>Leave</span>
+  </a>
+  <a mat-list-item routerLink="/dashboard/home/applyLeave" >
+    <span>ApplyLeave</span>
+  </a>
+  <ng-container *ngIf="'isLoggedIn()'; else loggedOut">
+    <a mat-list-item routerLink="/signout" (click)="signout()">Sign Out</a>
+  </ng-container>
+  <ng-template #loggedOut>
+    <a mat-list-item routerLink="/login">Login</a>
+    <a mat-list-item routerLink="/register">Register</a>
+  </ng-template>
+</mat-nav-list>
+
+

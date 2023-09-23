@@ -1,0 +1,63 @@
+mat-card{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.mat-calendar {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+.mat-calendar-body-cell {
+  position: relative;
+  cursor: pointer;
+  border: 2px solid #000;
+  width: 36px;
+  height: 80px;
+  border-radius: 0;
+  text-align: center;
+  line-height: 36px;
+}
+
+
+
+
+button.example-custom-date-class-red {
+  background-color: #ffdddd;
+  color: #f00; 
+}
+
+
+button.example-custom-date-class-green {
+  background-color: #ddffdd; 
+  color: #008000;
+ 
+}
+
+
+button.example-custom-date-class-yellow {
+  background-color: #ffffcc; 
+  color: #ff9900;
+}
+
+button.example-custom-date-class-holiday {
+  background-color: lightgray; 
+  color: red; 
+  border: 1px solid   #ffdddd;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

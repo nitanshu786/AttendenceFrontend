@@ -1,0 +1,74 @@
+<div class="mask d-flex align-items-center h-100 gradient-custom-3 p-5 m-5 bg-light">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-5">
+            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+            <form [formGroup]="registrationForm">
+              <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="username" type="text" placeholder="Enter your Name" [(ngModel)]="register.username" />
+                <mat-error *ngIf="registrationForm.get('username')!.invalid && (registrationForm.get('username')!.dirty || registrationForm.get('username')!.touched)">
+                  Please enter a valid Username.
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('username')?.hasError('maxlength')">
+                  username cannot be more than 12 characters long.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" type="text" placeholder="Enter your Email"  [(ngModel)]="register.email" />
+                <mat-error *ngIf="registrationForm.get('email')?.invalid && (registrationForm.get('email')?.dirty || registrationForm.get('email')?.touched)">
+                  Please enter a valid email.
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('email')?.hasError('maxlength')">
+                  email cannot be more than 40 characters long.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="passwords" type="password" placeholder="Enter your password"  [(ngModel)]="register.passwordHash" />
+                <mat-error *ngIf="registrationForm.get('passwords')?.hasError('required')">
+                  Password is required.
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('passwords')?.hasError('minlength')">
+                  Password must be at least 8 characters long.
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('passwords')?.hasError('maxlength')">
+                  Password cannot be more than 12 characters long.
+                </mat-error>
+                <mat-error *ngIf="registrationForm.get('passwords')?.hasError('pattern')">
+                  Password must contain at least one of: @, #, $, or &.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput formControlName="confirmPassword" type="password" placeholder="Confirm password" [(ngModel)]="register.confirm" />
+             
+                <div *ngIf="registrationForm.get('passwords')?.value !== registrationForm.get('confirmPassword')?.value && registrationForm.get('confirmPassword')?.touched">
+                </div>
+                <mat-error>
+                  Passwords do not match
+                </mat-error>
+              </mat-form-field>
+            </form>
+           
+          </div>
+          <button mat-raised-button color="primary" class="form-group"
+          [disabled]="registrationForm.invalid || registrationForm.get('passwords')?.value !== registrationForm.get('confirmPassword')?.value"
+          (click)="Register()">
+          Register
+        </button>
+        <p class="text-center text-muted mt-5 mb-0">Have already an account? <a routerLink="/login" class="fw-bold text-body"><u>Login here</u></a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

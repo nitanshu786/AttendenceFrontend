@@ -1,0 +1,99 @@
+<div class="kanban-board ">
+  <mat-card cdkDropListGroup class="column example-list" cdkDropList #backlogList="cdkDropList" [cdkDropListData]="BackLog"
+  [cdkDropListConnectedTo]="[devList, testList, doneList]" (cdkDropListDropped)="drop($event)" id="BackLog">
+  <mat-card-header>
+      <mat-card-title>Backlog</mat-card-title>
+  </mat-card-header>
+  <div *ngIf="BackLog.length > 0; else emptyBacklog">
+      <div class="example-box" *ngFor="let task of BackLog" cdkDrag [cdkDragData]="task" (click)="openDialog(task)">
+          <mat-card-content>
+              <p><strong>User Name:</strong> {{ task.userName }}</p>
+              <p><strong>Project Name:</strong> {{ task.projectName }}</p>
+              <p><strong>Priority:</strong> {{ task.taskPriority }}</p>
+          </mat-card-content>
+      </div>
+  </div>
+  <ng-template #emptyBacklog>
+      <div class="empty-state">
+          <mat-icon>inbox</mat-icon>
+          <p>No tasks in Backlog</p>
+      </div>
+  </ng-template>
+</mat-card>
+
+
+<mat-card cdkDropListGroup class="column example-list" cdkDropList #devList="cdkDropList" [cdkDropListData]="Development"
+    [cdkDropListConnectedTo]="[backlogList, testList, doneList]" (cdkDropListDropped)="drop($event)" id="Development">
+    <mat-card-header>
+        <mat-card-title>Development</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="Development.length > 0; else emptystage">
+        <div class="example-box" *ngFor="let develop of Development" cdkDrag [cdkDragData]="develop"
+            (click)="openDialog(develop)">
+            <mat-card-content>
+                <p><strong>User Name:</strong> {{ develop.userName }}</p>
+                <p><strong>Project Name:</strong> {{ develop.projectName }}</p>
+                <p><strong>Priority:</strong> {{ develop.taskPriority }}</p>
+            </mat-card-content>
+        </div>
+    </div>
+    <ng-template #emptystage>
+        <div class="empty-state">
+            <mat-icon>inbox</mat-icon>
+            <p>No tasks in Development</p>
+        </div>
+    </ng-template>
+</mat-card>
+
+
+
+<mat-card cdkDropListGroup class="column example-list" cdkDropList #testList="cdkDropList" [cdkDropListData]="Test"
+    [cdkDropListConnectedTo]="[backlogList, devList, doneList]" (cdkDropListDropped)="drop($event)" id="Test">
+    <mat-card-header>
+        <mat-card-title>Test</mat-card-title>
+    </mat-card-header>
+    <div  *ngIf="Test.length > 0; else emptyState">
+        <div class="example-box" *ngFor="let test of Test" cdkDrag [cdkDragData]="test" (click)="openDialog(test)">
+            <mat-card-content>
+                <p><strong>User Name:</strong> {{ test.userName }}</p>
+                <p><strong>Project Name:</strong> {{ test.projectName }}</p>
+                <p><strong>Priority:</strong> {{ test.taskPriority }}</p>
+            </mat-card-content>
+        </div>
+    </div>
+    <ng-template #emptyState>
+        <div class="empty-state">
+            <mat-icon>inbox</mat-icon>
+            <p>No tasks in Test</p>
+        </div>
+    </ng-template>
+</mat-card>
+
+
+<mat-card cdkDropListGroup class="column example-list" cdkDropList #doneList="cdkDropList" [cdkDropListData]="Done"
+    (cdkDropListDropped)="TaskState($event)" [cdkDropListConnectedTo]="[backlogList, devList, testList]" id="Done">
+    <mat-card-header>
+        <mat-card-title>Done</mat-card-title>
+    </mat-card-header>
+    <div *ngIf="Done.length > 0; else emptydone">
+        <div class="example-box" *ngFor="let done of Done" cdkDrag [cdkDragData]="done"
+            [cdkDragDisabled]="done.isActive === 'disabled'">
+            <mat-card-content (click)="openDialog(done)">
+                <p><strong>User Name:</strong> {{ done.userName }}</p>
+                <p><strong>Project Name:</strong> {{ done.projectName }}</p>
+                <p><strong>Priority:</strong> {{ done.taskPriority }}</p>
+            </mat-card-content>
+            <button mat-raised-button color="primary" *ngIf="Done" 
+                (click)="SaveTaskState(done, 'Done')">Save</button>
+        </div>
+    </div>
+    <ng-template #emptydone>
+        <div class="empty-state">
+            <mat-icon>inbox</mat-icon>
+            <p>No tasks are Done</p>
+        </div>
+    </ng-template>
+</mat-card>
+
+
+</div>

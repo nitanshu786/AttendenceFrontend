@@ -1,0 +1,130 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Click here to Check content Detail
+      </mat-panel-title>
+      <mat-panel-description>
+        This is a summary of the content
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div mat-dialog-content>
+      <div class="details-container">
+        <div class="detail-row">
+          <p class="detail-label">Project Name:</p>
+          <p class="detail-value">{{ data.projectName }}</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Assigned To:</p>
+          <p class="detail-value">{{ data.userName }}</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Task Name:</p>
+          <p class="detail-value">{{ data.task_Name }}</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Priority:</p>
+          <p class="detail-value">{{ data.taskPriority }}</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Start Date:</p>
+          <p class="detail-value">{{ data.formatDateStart }}</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">End Date:</p>
+          <p class="detail-value">{{ data.formatEndDate }}</p>
+        </div>
+        <div class="detail-row">
+          <p class="detail-label">Discription:</p>
+          <p class="detail-value">{{ data.taskDiscription }}</p>
+        </div>
+
+      </div>
+    </div>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Click here to Edit Content Detail
+      </mat-panel-title>
+      <mat-panel-description>
+        Edit Panel {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-dialog-content class="mat-typography">
+      <h3>Edit Daily Bases Task</h3>
+      <mat-form-field class="custom-form-fieldds">
+        <mat-label>Assigned To</mat-label>
+        <mat-select [(ngModel)]="taskdata.applicationUserId">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let user of dialogdata " [value]="user.userId">{{user.userName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="example-container">
+        <!-- <form [formGroup]="options"> -->
+        <div class="example-form-fields">
+          <mat-form-field>
+            <!-- addstuf -->
+            <mat-label>Project-Name</mat-label>
+            <input matInput placeholder="Name of Task" [disabled]="taskdata.projectName"
+              [(ngModel)]=" taskdata.projectName">
+            <mat-label>Project<em></em></mat-label>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Task-Name</mat-label>
+            <input matInput placeholder="Name of Task" [(ngModel)]="taskdata.task_Name">
+          </mat-form-field>
+        </div>
+
+      </div>
+
+      <!-- discription -->
+      <mat-form-field class="custom-form-field  m-4 p-3" hintLabel="Max 100 characters">
+        <mat-label>Discription</mat-label>
+        <textarea matInput #input maxlength="100" placeholder="Enter Your Discription"
+          [(ngModel)]=" taskdata.taskDiscription"></textarea>
+        <mat-hint align="end">{{input.value.length}}/100</mat-hint>
+      </mat-form-field>
+      <!-- priority -->
+      <mat-form-field class="custom-form-field  m-4 p-3">
+        <mat-label>Priority</mat-label>
+        <mat-select [(value)]="taskdata.taskPriority">
+          <mat-option>None</mat-option>
+          <mat-option value="High">High</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="Low">Low</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="example-container">
+        <div class="example-form-fields">
+          <mat-form-field>
+            <mat-label>Choose a start date</mat-label>
+            <input matInput [disabled]="data.formatDateStart" [(ngModel)]=" taskdata.formatDateStart">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="StartDatepicker"></mat-datepicker-toggle>
+            <mat-datepicker #StartDatepicker></mat-datepicker>
+          </mat-form-field>
+
+          <!-- next -->
+          <mat-form-field>
+            <mat-label>Choose a end date</mat-label>
+            <input matInput [matDatepicker]="EndDatepicker" [min]="minDate" [(ngModel)]=" taskdata.taskEnd">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="EndDatepicker" ></mat-datepicker-toggle>
+            <mat-datepicker #EndDatepicker></mat-datepicker>
+          </mat-form-field>
+
+        </div>
+        <!-- </form> -->
+      </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="OnUpdate()">Update</button>
+    </mat-dialog-actions>
+  </mat-expansion-panel>
+</mat-accordion>

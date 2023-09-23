@@ -1,0 +1,58 @@
+.nav-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.row a {
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.row a:hover {
+  background-color: #ddd;
+}
+
+
+.right-gap {
+  margin-right: auto;
+}
+
+.center-gap {
+  margin: auto;
+}
+
+.left-gap {
+  margin-left: auto;
+}
+
+
+
+.oval-button {
+  width: 100px;
+  height: 50px;
+  font-size: 14px;
+}
+
+.fill-space {
+  flex: 1;
+}
+
+
+.punch-in-button {
+  background-color: salmon;
+  color: white;
+}
+
+
+.punch-out-button {
+  background-color: red;
+  color: white;
+}
