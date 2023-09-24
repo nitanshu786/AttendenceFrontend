@@ -55,6 +55,9 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { TimeLabelPipe } from './Pipes/time-label.pipe';
 import { LeavebalanceComponent } from './Components/leavebalance/leavebalance.component';
 import { ApplyLeaveComponent } from './Components/apply-leave/apply-leave.component';
+import { DecodePipe } from './Pipes/decode.pipe';
+
+// npm install ngx-extended-pdf-viewer
 
 @NgModule({
   declarations: [
@@ -76,7 +79,8 @@ import { ApplyLeaveComponent } from './Components/apply-leave/apply-leave.compon
     AdmintaskpanelComponent,
     TimeLabelPipe,
     LeavebalanceComponent,
-    ApplyLeaveComponent
+    ApplyLeaveComponent,
+    DecodePipe,
   ],
   imports: [
     BrowserModule,

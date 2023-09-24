@@ -1,4 +1,19 @@
-<mat-card class="leave-form-card">
+<div class="leave-container">
+  <div class="leave-sidebar">
+    <nav>
+      <ul>
+        <li routerLinkActive="active"><a routerLink="/apply">Apply Leave</a></li>
+        <li routerLinkActive="active"><a routerLink="/cancel-leave">Cancel Leave</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="leave-content">
+    <div *ngIf="leaveIsApplied" class="success-message" >
+      Your Leave is Applied 
+    </div>
+<mat-card class="leave-form-card" *ngIf="!leaveIsApplied">
+  
     <mat-card-header>
       <mat-card-title>Apply for Leave</mat-card-title>
     </mat-card-header>
@@ -49,13 +64,71 @@
   
         <div class="form-row file-upload">
             <mat-label>Attach File</mat-label>
-            <input type="file" (change)="onFileSelected($event)" #fileInput>
+            <input type="file" (change)="onFileSelected($event)" >
            
          
         </div>
   
         <button mat-raised-button color="primary" type="submit" [disabled]="leaveForm.invalid">Apply</button>
+
       </form>
     </mat-card-content>
   </mat-card>
+</div>
+
+<table class="static-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Leave Type</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th>Attach</th> <!-- Add a "Preview" button column -->
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of leaveData">
+      <td>{{ item.id }}</td>
+      <td>{{ item.leaveType }}</td>
+      <td>{{ item.startDate }}</td>
+      <td>{{ item.endDate }}</td>
+      <td>{{ item.status }}</td>
+      <td>
+        <button mat-raised-button color="primary" (click)="previewAttachment(item)">Preview</button>
+      </td>
+    </tr>
+    
+  </tbody>
   
+</table>
+
+<!-- Image Preview Modal -->
+
+  <!-- Attachment Preview Modal -->
+ 
+
+  <div class="attachment-preview-modal" *ngIf="showAttachmentPreview">
+    <div class="modal-content">
+      <!-- Display different content based on attachment type -->
+      <ng-container [ngSwitch]="selectedAttachmentType">
+        <div *ngSwitchCase="'text'">
+          <pre>{{ selectedAttachment|decode }}</pre>
+        </div>
+        <div *ngSwitchCase="'image'">
+          <img [src]="selectedAttachment" alt="Attachment">
+        </div>
+        <div *ngSwitchCase="'pdf'">
+          <!-- Display PDF content here (e.g., using an iframe) -->
+          
+          <iframe [src]="pdfUrl" frameborder="0" style="width: 100%; height: 500px;"></iframe>
+        </div>
+       
+        <div *ngSwitchDefault>
+          <p>Unsupported attachment type</p>
+        </div>
+      </ng-container>
+      <button mat-raised-button color="primary" (click)="closeAttachmentPreview()">Close</button>
+    </div>
+  </div>
+</div>
